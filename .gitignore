@@ -1,12 +1,12 @@
-*.iml
-.gradle
-/local.properties
-/.idea
-.DS_Store
-/build
-**/build
-/captures
-.externalNativeBuild
-.cxx
+# Gradle
+.gradle/
+build/
+!*.cs3
+
+# Android
 local.properties
-.vscode
+
+# IDE
+.idea/
+*.iml
+files/
