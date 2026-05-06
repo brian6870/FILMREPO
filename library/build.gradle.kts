@@ -1,39 +1,115 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import com.codingfeline.buildkonfig.compiler.FieldSpec
+import org.jetbrains.dokka.gradle.engine.parameters.KotlinPlatform
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+
 plugins {
-    id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
+    id("maven-publish") // Gradle core plugin
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.lint)
+    alias(libs.plugins.android.multiplatform.library)
+    alias(libs.plugins.buildkonfig)
+    alias(libs.plugins.dokka)
 }
 
-android {
-    namespace = "com.filmpire.app.library"
-    compileSdk = 35
+val javaTarget = JvmTarget.fromTarget(libs.versions.jvmTarget.get())
 
-    defaultConfig {
-        minSdk = 21
-        targetSdk = 35
+kotlin {
+    version = "1.0.1"
+
+    android {
+        // If this is the same com.lagradost.cloudstream3.R stops working
+        namespace = "com.lagradost.api"
+
+        compileSdk = libs.versions.compileSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
+
+        compilerOptions {
+            jvmTarget.set(javaTarget)
+        }
+
+        lint {
+            targetSdk = libs.versions.targetSdk.get().toInt()
+        }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+    jvm()
+
+    compilerOptions {
+        freeCompilerArgs.addAll(
+            "-Xexpect-actual-classes",
+            "-Xannotation-default-target=param-property"
+        )
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    sourceSets {
+        all {
+            languageSettings {
+                optIn("com.lagradost.cloudstream3.InternalAPI")
+                optIn("com.lagradost.cloudstream3.Prerelease")
+            }
+        }
+
+        commonMain.dependencies {
+            implementation(libs.annotation) // Annotations
+            implementation(libs.nicehttp) // HTTP Lib
+            implementation(libs.jackson.module.kotlin) // JSON Parser
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.fuzzywuzzy) // Match Extractors
+            implementation(libs.jsoup) // HTML Parser
+            implementation(libs.rhino) // Run JavaScript
+            implementation(libs.newpipeextractor)
+            implementation(libs.tmdb.java) // TMDB API v3 Wrapper Made with RetroFit
+        }
     }
 }
 
-dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("org.jsoup:jsoup:1.17.2")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.0")
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+tasks.withType<KotlinJvmCompile> {
+    compilerOptions {
+        jvmTarget.set(javaTarget)
+    }
+}
+
+buildkonfig {
+    packageName = "com.lagradost.api"
+    exposeObjectWithName = "BuildConfig"
+
+    defaultConfigs {
+        // Reads local.properties
+        val localProperties = gradleLocalProperties(rootDir, project.providers)
+        buildConfigField(
+            FieldSpec.Type.STRING,
+            "MDL_API_KEY",
+            (System.getenv("MDL_API_KEY") ?: localProperties["mdl.key"]).toString()
+        )
+    }
+}
+
+publishing {
+    publications {
+        withType<MavenPublication> {
+            groupId = "com.lagradost.api"
+        }
+    }
+}
+
+dokka {
+    moduleName = "Library"
+    dokkaSourceSets {
+        configureEach {
+            analysisPlatform = KotlinPlatform.AndroidJVM
+            documentedVisibilities(
+                VisibilityModifier.Public,
+                VisibilityModifier.Protected
+            )
+
+            sourceLink {
+                localDirectory = file("..")
+                remoteUrl("https://github.com/recloudstream/cloudstream/tree/master")
+                remoteLineSuffix = "#L"
+            }
+        }
+    }
 }

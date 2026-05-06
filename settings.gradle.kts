@@ -1,8 +1,9 @@
+// https://developer.android.com/build#settings-file
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
-        gradlePluginPortal()
     }
 }
 
@@ -11,10 +12,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        mavenLocal()
         maven("https://jitpack.io")
     }
 }
 
 rootProject.name = "Filmpire"
-include(":app")
-include(":library")
+include(":app", ":library", ":docs")

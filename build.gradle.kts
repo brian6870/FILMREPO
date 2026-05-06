@@ -1,8 +1,16 @@
 plugins {
-    id("com.android.application") version "8.5.0" apply false
-    id("com.android.library") version "8.5.0" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.24" apply false
-    id("com.google.dagger.hilt.android") version "2.51.1" apply false
-    id("com.google.devtools.ksp") version "1.9.24-1.0.20" apply false
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.24" apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.lint) apply false
+    alias(libs.plugins.android.multiplatform.library) apply false
+    alias(libs.plugins.buildkonfig) apply false // Universal build config
+    alias(libs.plugins.dokka) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
+}
+
+allprojects {
+    // https://docs.gradle.org/current/userguide/upgrading_major_version_9.html#test_task_fails_when_no_tests_are_discovered
+    tasks.withType<AbstractTestTask>().configureEach {
+        failOnNoDiscoveredTests = false
+    }
 }
