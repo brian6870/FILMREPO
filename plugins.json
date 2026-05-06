@@ -1,17 +1,16 @@
 [
   {
+    "url": "https://raw.githubusercontent.com/brian6870/FILMREPO/refs/heads/main/builds/FilmpireExtension.cs3",
+    "status": 1,
+    "version": 1,
     "name": "Filmpire",
     "internalName": "FilmpireProvider",
-    "description": "Watch free movies and TV shows from Filmpire via TMDB",
-    "version": 1,
-    "author": "brian6870",
     "authors": ["brian6870"],
+    "description": "Watch free movies and TV shows from Filmpire via TMDB",
+    "fileSize": 16827,
+    "repositoryUrl": "https://github.com/brian6870/FILMREPO",
     "language": "en",
     "tvTypes": ["Movie", "TvSeries"],
-    "url": "https://raw.githubusercontent.com/brian6870/FILMREPO/refs/heads/main/builds/FilmpireExtension.cs3",
-    "fileSize": 16827,
-    "apiVersion": 1,
-    "status": 1,
-    "repositoryUrl": "https://github.com/brian6870/FILMREPO"
+    "apiVersion": 1
   }
 ]
