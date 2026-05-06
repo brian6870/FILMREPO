@@ -1,8 +1,8 @@
 {
-    "name": "Filmpire Repository",
-    "description": "Watch free movies and TV shows",
+    "name": "Filmpire Repo",
+    "description": "Filmpire Repository - Free movies and TV shows",
     "manifestVersion": 1,
     "pluginLists": [
-      "https://raw.githubusercontent.com/brian6870/FILMREPO/refs/heads/main/plugins.json"
+      "https://raw.githubusercontent.com/brian6870/FILMREPO/refs/heads/builds/plugins.json"
     ]
 }
