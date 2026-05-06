@@ -1,8 +1,10 @@
-{
-  "name": "Filmpire",
-  "description": "Watch free movies and TV shows from Filmpire",
-  "version": "1.0.0",
-  "author": "brian6870",
-  "language": "en",
-  "url": "https://raw.githubusercontent.com/brian6870/FILMREPO/main/FilmpireExtension.cs3"
-}
+[
+  {
+    "name": "Filmpire",
+    "description": "Watch free movies and TV shows from Filmpire",
+    "version": "1.0.0",
+    "author": "brian6870",
+    "language": "en",
+    "url": "https://raw.githubusercontent.com/brian6870/FILMREPO/main/FilmpireExtension.cs3"
+  }
+]
