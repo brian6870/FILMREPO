@@ -1,6 +1,8 @@
 {
-  "name": "Filmpire Repository",
-  "description": "CloudStream extension for Filmpire - Watch free movies and TV shows via TMDB",
-  "manifestVersion": 1,
-  "pluginFile": "https://raw.githubusercontent.com/brian6870/FILMREPO/main/plugins.json"
+    "name": "Filmpire Repository",
+    "description": "CloudStream extension for Filmpire - Watch free movies and TV shows via TMDB",
+    "manifestVersion": 1,
+    "pluginLists": [
+      "https://raw.githubusercontent.com/brian6870/FILMREPO/refs/heads/main/plugins.json"
+    ]
 }
