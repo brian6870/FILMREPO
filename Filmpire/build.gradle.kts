@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 version = 1
 
 cloudstream {
-    description = "Watch free movies and TV shows from Filmpire via TMDB"
+    description = "Watch free movies and TV shows with streams from AllMovieLand"
     authors = listOf("brian6870")
     status = 1
     tvTypes = listOf("Movie", "TvSeries")
