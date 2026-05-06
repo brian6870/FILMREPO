@@ -1,12 +1,12 @@
-package com.filmpire.cloudstream
+package com.phisher98
 
 import android.content.Context
 import com.lagradost.cloudstream3.plugins.CloudstreamPlugin
 import com.lagradost.cloudstream3.plugins.Plugin
 
 @CloudstreamPlugin
-class FilmpirePlugin : Plugin() {
+class StreamPlayPlugin : Plugin() {
     override fun load(context: Context) {
-        registerMainAPI(FilmpireProvider())
+        registerMainAPI(StreamPlay()) 
     }
 }
