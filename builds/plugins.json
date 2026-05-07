@@ -1,0 +1,16 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/brian6870/FILMREPO/refs/heads/main/builds/Filmpire.cs3",
+    "status": 1,
+    "version": 1,
+    "name": "Filmpire",
+    "internalName": "Filmpire",
+    "authors": ["brian6870"],
+    "description": "StreamPlay extractors - AllMovieLand, CinemaCity + 30+ providers",
+    "fileSize": 879104,
+    "repositoryUrl": "https://github.com/brian6870/FILMREPO",
+    "language": "en",
+    "tvTypes": ["Movie", "TvSeries", "Anime", "Cartoon"],
+    "apiVersion": 1
+  }
+]
