@@ -201,7 +201,7 @@ class SettingsAccount : BasePreferenceFragmentCompat(), BiometricCallback {
 
                 /*val logoBytes = ContextCompat.getDrawable(
                     activity,
-                    R.drawable.cloud_2_solid
+                    R.drawable.ic_filmpire_logo
                 )?.toBitmapOrNull()?.let { bitmap ->
                     val csLogo = ByteArrayOutputStream()
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, csLogo)
