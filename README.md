@@ -1,39 +1,27 @@
-# Filmpire CloudStream Extension
+# Filmpire
 
-Watch free movies and TV shows on CloudStream via TMDB API with VidSrc streaming sources.
+Watch free movies and TV shows on any Android device. Built on CloudStream, pre-loaded with working extensions.
 
-## Features
+## Download
 
-- Browse trending movies and TV shows
-- Search across movies and TV series
-- Episode lists for TV shows with season support
-- Multiple streaming sources (VidSrc, ScreenFetch)
+[**Download Filmpire APK**](https://github.com/brian6870/FILMREPO/raw/main/Filmpire.apk)
 
-## Public Installation
-
-1. Open **CloudStream** on your Android TV / device
-2. Go to **Settings** → **Extensions** → **Add Repository**
-3. Enter this URL:
-
-https://raw.githubusercontent.com/brian6870/FILMREPO/main/repo.json
+QR code to download directly on your device:
+FeaturesPre-installed StreamPlay extension (AllMovieLand, CinemaCity + 30+ providers)
+Android TV support with full remote navigation
+Phone and tablet layouts
+ExoPlayer with subtitles, quality selection, speed control
+Search, continue watching, library, downloads
+30+ language translations
+ExtensionsThe Filmpire extension auto-installs on first launch. For manual install in CloudStream:
+Repository URL:
 text
 CopyDownload
-
-4. Tap **Add** → The Filmpire extension will appear under available extensions
-5. Install and start streaming
-
-## Manual Installation
-
-Download the latest `.cs3` file from the repository and sideload via:
-- **ADB:** `adb install FilmpireExtension.cs3`
-- **File Manager:** Open the file on your device and install
-
-## Build from Source
-
-```bash
-git clone git@github.com:brian6870/FILMREPO.git
+https://raw.githubusercontent.com/brian6870/FILMREPO/refs/heads/builds/repo.json
+Build from Sourcebash
+CopyDownload
+git clone https://github.com/brian6870/FILMREPO.git
 cd FILMREPO
-export ANDROID_HOME=/path/to/android-sdk
-./gradlew :FilmpireExtension:make
-# Output: FilmpireExtension/build/FilmpireExtension.cs3
-LicenseMIT — see [LICENSE](LIC
+./gradlew :app:assemblePrereleaseDebug
+# APK outputs to: app/build/outputs/apk/prerelease/de
+LicenseMIT
